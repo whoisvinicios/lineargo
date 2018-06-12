@@ -24,6 +24,22 @@ func Identity(row, column int) *Matrix {
 	return &Matrix{}
 }
 
+// Create a matrix with all elements zeros
+// TODO test this function
+func CreateZeroMatrix(row, column int) *Matrix {
+	return CreateZeroMatrix(row, column)
+}
+
+// TODO implement
+func (m Matrix) Add(o Matrix) *Matrix {
+	return nil
+}
+
+// TODO implement
+func (m Matrix) Subtract(o Matrix) *Matrix {
+	return nil
+}
+
 func (m Matrix) Multiply(o Matrix) *Matrix {
 	if m.columns != o.rows {
 		panic("The number of rows must be equals to the number of rows of the matrix")
@@ -40,6 +56,11 @@ func (m Matrix) Multiply(o Matrix) *Matrix {
 	return &Matrix{matrix: out, rows: m.rows, columns: m.columns}
 }
 
+// TODO inplement
+func (m Matrix) ScalarMultiply(e int) *Matrix {
+	return nil
+}
+
 func (m Matrix) Compare(o Matrix) bool {
 	for x := range m.matrix {
 		for y := range o.matrix[0] {
@@ -49,11 +70,4 @@ func (m Matrix) Compare(o Matrix) bool {
 		}
 	}
 	return true
-}
-
-// Create a matrix with all elements zeros
-// TODO test this function
-func CreateZeroMatrix(rows, columns int) *Matrix {
-
-	return &Matrix{matrix: [][]float64{}, rows: rows, columns: columns}
 }
