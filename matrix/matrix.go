@@ -6,8 +6,22 @@ type Matrix struct {
 	columns int
 }
 
+// Return a new matrix of given slice of slices
 func NewMatrix(m [][]float64) *Matrix {
 	return &Matrix{matrix: m, rows: len(m), columns: len(m[0])}
+}
+
+// Create a new matrix of zeros
+func CreateMatrix(row, columns int) *Matrix {
+	matrix := make([][]float64, row)
+	for i := range matrix {
+		matrix[i] = make([]float64, columns)
+	}
+	return &Matrix{matrix: matrix, rows: row, columns: columns}
+}
+
+func Identity(row, column int) *Matrix {
+	return &Matrix{}
 }
 
 func (m Matrix) Multiply(o Matrix) *Matrix {
@@ -40,5 +54,6 @@ func (m Matrix) Compare(o Matrix) bool {
 // Create a matrix with all elements zeros
 // TODO test this function
 func CreateZeroMatrix(rows, columns int) *Matrix {
+
 	return &Matrix{matrix: [][]float64{}, rows: rows, columns: columns}
 }
