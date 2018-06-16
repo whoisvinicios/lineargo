@@ -7,6 +7,7 @@ type Matrix struct {
 }
 
 // Return a new matrix of given slice of slices
+// NewMatrix([][]float64{{1, 2}, {2, 1}})
 func NewMatrix(m [][]float64) *Matrix {
 	return &Matrix{matrix: m, rows: len(m), columns: len(m[0])}
 }
@@ -62,7 +63,25 @@ func (m Matrix) ScalarMultiply(e int) *Matrix {
 	return nil
 }
 
-func (m Matrix) Compare(o Matrix) bool {
+// TODO Check if this implementation is the best
+// Compare two matrix concurrently
+// for each row this method create a goroutine
+func (m *Matrix) CompareConcurrently(o *Matrix) bool {
+	for x := range m.matrix {
+		go func() bool {
+			for y := range o.matrix[0] {
+				if m.matrix[x][y] != o.matrix[x][y] {
+					return false
+				}
+			}
+			return true
+		}()
+	}
+	return true
+}
+
+// Compare two matrix
+func (m *Matrix) Compare(o *Matrix) bool {
 	for x := range m.matrix {
 		for y := range o.matrix[0] {
 			if m.matrix[x][y] != o.matrix[x][y] {
