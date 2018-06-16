@@ -1,5 +1,6 @@
 package matrix
 
+// An Matrix represents value distributed in rows and column
 type Matrix struct {
 	matrix  [][]float64
 	rows    int
@@ -25,12 +26,6 @@ func CreateMatrix(row, columns int) *Matrix {
 func Identity(row, column int) *Matrix {
 	return &Matrix{}
 }
-
-// Create a matrix with all elements zeros
-// TODO test this function
-//func CreateZeroMatrix(row, column int) *Matrix {
-//	return CreateZeroMatrix(row, column)
-//}
 
 // TODO implement
 func (m Matrix) Add(o Matrix) *Matrix {
