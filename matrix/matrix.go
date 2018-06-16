@@ -14,6 +14,7 @@ func NewMatrix(m [][]float64) *Matrix {
 // Create a new matrix of zeros
 func CreateMatrix(row, columns int) *Matrix {
 	matrix := make([][]float64, row)
+
 	for i := range matrix {
 		matrix[i] = make([]float64, columns)
 	}
@@ -26,9 +27,9 @@ func Identity(row, column int) *Matrix {
 
 // Create a matrix with all elements zeros
 // TODO test this function
-func CreateZeroMatrix(row, column int) *Matrix {
-	return CreateZeroMatrix(row, column)
-}
+//func CreateZeroMatrix(row, column int) *Matrix {
+//	return CreateZeroMatrix(row, column)
+//}
 
 // TODO implement
 func (m Matrix) Add(o Matrix) *Matrix {
