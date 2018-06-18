@@ -7,13 +7,13 @@ type Matrix struct {
 	columns int
 }
 
-// Return a new matrix of given slice of slices
+// NewMatrix returns a matrix of given slice of slices
 // NewMatrix([][]float64{{1, 2}, {2, 1}})
 func NewMatrix(m [][]float64) *Matrix {
 	return &Matrix{matrix: m, rows: len(m), columns: len(m[0])}
 }
 
-// Create a new matrix of zeros
+// CreateMatrix return a new matrix of zeros
 func CreateMatrix(row, columns int) *Matrix {
 	matrix := make([][]float64, row)
 	for i := range matrix {
@@ -22,20 +22,24 @@ func CreateMatrix(row, columns int) *Matrix {
 	return &Matrix{matrix: matrix, rows: row, columns: columns}
 }
 
+// Identity returns an array with only 1 on its main diagonal
 func Identity(row, column int) *Matrix {
 	return &Matrix{}
 }
 
+// Add two arrays
 // TODO implement
 func (m Matrix) Add(o Matrix) *Matrix {
 	return nil
 }
 
+// Subtract two arrays
 // TODO implement
 func (m Matrix) Subtract(o Matrix) *Matrix {
 	return nil
 }
 
+// Multiply two arrays
 func (m Matrix) Multiply(o Matrix) *Matrix {
 	if m.columns != o.rows {
 		panic("The number of rows must be equals to the number of rows of the matrix")
@@ -50,24 +54,25 @@ func (m Matrix) Multiply(o Matrix) *Matrix {
 	return &Matrix{matrix: out, rows: m.rows, columns: m.columns}
 }
 
+// ScalarMultiply an array by an scalar number
 // TODO inplement
 func (m Matrix) ScalarMultiply(e int) *Matrix {
 	return nil
 }
 
-// TODO Check if this implementation is the best
-// Compare two matrix concurrently
+// CompareConcurrently two matrix concurrently
 // for each row this method create a goroutine
+// TODO Check if this implementation is the best
 func (m *Matrix) CompareConcurrently(o *Matrix) bool {
 	for x := range m.matrix {
-		go func() bool {
+		go func(x int) bool {
 			for y := range o.matrix[0] {
 				if m.matrix[x][y] != o.matrix[x][y] {
 					return false
 				}
 			}
 			return true
-		}()
+		}(x)
 	}
 	return true
 }
