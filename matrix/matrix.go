@@ -1,13 +1,13 @@
 package matrix
 
-// An Matrix represents value distributed in rows and column
+// An Matrix represents 2D array
 type Matrix struct {
 	matrix  [][]float64
 	rows    int
 	columns int
 }
 
-// NewMatrix returns a matrix of given slice of slices
+// NewMatrix returns a 2d array of given slice of slices
 // NewMatrix([][]float64{{1, 2}, {2, 1}})
 func NewMatrix(m [][]float64) *Matrix {
 	return &Matrix{matrix: m, rows: len(m), columns: len(m[0])}
