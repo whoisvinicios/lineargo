@@ -16,7 +16,6 @@ func NewMatrix(m [][]float64) *Matrix {
 // Create a new matrix of zeros
 func CreateMatrix(row, columns int) *Matrix {
 	matrix := make([][]float64, row)
-
 	for i := range matrix {
 		matrix[i] = make([]float64, columns)
 	}
@@ -41,7 +40,6 @@ func (m Matrix) Multiply(o Matrix) *Matrix {
 	if m.columns != o.rows {
 		panic("The number of rows must be equals to the number of rows of the matrix")
 	}
-
 	out := make([][]float64, len(m.matrix))
 	for x := range m.matrix {
 		for y := range o.matrix {
@@ -49,7 +47,6 @@ func (m Matrix) Multiply(o Matrix) *Matrix {
 			out[x][y] += m.matrix[x][y] * o.matrix[y][x]
 		}
 	}
-
 	return &Matrix{matrix: out, rows: m.rows, columns: m.columns}
 }
 
