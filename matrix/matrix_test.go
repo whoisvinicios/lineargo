@@ -15,7 +15,7 @@ func TestMatrix_New(t *testing.T) {
 func TestMatrix_Multiplication(t *testing.T) {
 	x := NewMatrix([][]float64{{2, 3}, {1, 5}})
 	y := NewMatrix([][]float64{{4, 3, 6}, {1, -2, 3}})
-	c := NewMatrix([][]float64{{11, 0, 21}, {-1, 13, -9}})
+	c := NewMatrix([][]float64{{11, 0, 21}, {9, -7, 21}})
 	z := x.Multiply(y)
 	fmt.Println(z)
 	if !z.Compare(c) {
