@@ -1,6 +1,7 @@
 package matrix
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -11,8 +12,19 @@ func TestMatrix_New(t *testing.T) {
 	}
 }
 
+func TestMatrix_Multiplication(t *testing.T) {
+	x := NewMatrix([][]float64{{2, 3}, {1, 5}})
+	y := NewMatrix([][]float64{{4, 3, 6}, {1, -2, 3}})
+	c := NewMatrix([][]float64{{11, 0, 21}, {-1, 13, -9}})
+	z := x.Multiply(y)
+	fmt.Println(z)
+	if !z.Compare(c) {
+		t.Fatal("The z are not equals to c")
+	}
+}
+
 func TestMatrix_Create(t *testing.T) {
-	x := CreateMatrix(5, 5)
+	x := ZeroMatrix(5, 5)
 	if x == nil {
 		t.Fatal("CreateMatrix are returnuing nil matrix")
 	}

@@ -13,8 +13,8 @@ func NewMatrix(m [][]float64) *Matrix {
 	return &Matrix{matrix: m, rows: len(m), columns: len(m[0])}
 }
 
-// CreateMatrix return a new matrix of zeros
-func CreateMatrix(row, columns int) *Matrix {
+// ZeroMatrix return a new matrix of zeros
+func ZeroMatrix(row, columns int) *Matrix {
 	matrix := make([][]float64, row)
 	for i := range matrix {
 		matrix[i] = make([]float64, columns)
@@ -40,13 +40,14 @@ func (m Matrix) Subtract(o Matrix) *Matrix {
 }
 
 // Multiply two arrays
-func (m Matrix) Multiply(o Matrix) *Matrix {
+// FIXME
+func (m *Matrix) Multiply(o *Matrix) *Matrix {
 	if m.columns != o.rows {
 		panic("The number of rows must be equals to the number of rows of the matrix")
 	}
 	out := make([][]float64, len(m.matrix))
-	for x := range m.matrix {
-		for y := range o.matrix {
+	for x := 0; x < m.rows; x++ {
+		for y := 0; y < o.columns; y++ {
 			out[x] = make([]float64, len(o.matrix))
 			out[x][y] += m.matrix[x][y] * o.matrix[y][x]
 		}
