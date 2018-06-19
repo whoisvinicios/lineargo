@@ -40,19 +40,19 @@ func (m Matrix) Subtract(o Matrix) *Matrix {
 }
 
 // Multiply two arrays
-// FIXME
 func (m *Matrix) Multiply(o *Matrix) *Matrix {
 	if m.columns != o.rows {
 		panic("The number of rows must be equals to the number of rows of the matrix")
 	}
-	out := make([][]float64, len(m.matrix))
+	out := ZeroMatrix(m.rows, o.columns)
 	for x := 0; x < m.rows; x++ {
 		for y := 0; y < o.columns; y++ {
-			out[x] = make([]float64, len(o.matrix))
-			out[x][y] += m.matrix[x][y] * o.matrix[y][x]
+			for z := 0; z < o.rows; z++ {
+				out.matrix[x][y] += m.matrix[x][z] * o.matrix[z][y]
+			}
 		}
 	}
-	return &Matrix{matrix: out, rows: m.rows, columns: m.columns}
+	return out
 }
 
 // ScalarMultiply an array by an scalar number
