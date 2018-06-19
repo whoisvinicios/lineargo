@@ -34,3 +34,13 @@ func (v *Vector) ScalarMultiply(o float64) *Vector {
 	}
 	return &Vector{vector: out, length: len(out)}
 }
+
+// Compare the given vector
+func (v *Vector) Compare(o *Vector) bool {
+	for x := range v.vector {
+		if v.vector[x] != o.vector[x] {
+			return false
+		}
+	}
+	return true
+}
