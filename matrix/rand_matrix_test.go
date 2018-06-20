@@ -1,16 +1,16 @@
 package matrix
 
 import (
-	"fmt"
 	"testing"
 )
 
+var x = RandMatrix(10000, 10000)
+var y = RandMatrix(10000, 10000)
+
 func TestRandMatrix(t *testing.T) {
-	m := RandMatrix(10000, 10000)
-	fmt.Println(m)
+	x.Multiply(y)
 }
 
 func TestRandMatrixConc(t *testing.T) {
-	m := RandMatrixConc(10000, 10000)
-	fmt.Println(m)
+	x.MultiplyConcurrent(y)
 }
