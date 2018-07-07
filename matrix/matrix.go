@@ -7,6 +7,10 @@ type Matrix struct {
 	columns int
 }
 
+type Array struct {
+	data interface{}
+}
+
 // NewMatrix returns a 2d array of given slice of slices
 // NewMatrix([][]float64{{1, 2}, {2, 1}})
 func NewMatrix(m [][]float64) *Matrix {
