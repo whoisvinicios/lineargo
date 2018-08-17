@@ -1,5 +1,7 @@
 package matrix
 
+// Tensor: Multidimensional Matrix
+
 // An Matrix represents 2D array
 type Matrix struct {
 	matrix  [][]float64
