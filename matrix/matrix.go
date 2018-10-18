@@ -1,16 +1,13 @@
 package matrix
 
 // Tensor: Multidimensional Matrix
+// Struct tensor or Matrix???
 
 // An Matrix represents 2D array
 type Matrix struct {
 	matrix  [][]float64
 	rows    int
 	columns int
-}
-
-type Array struct {
-	data interface{}
 }
 
 // NewMatrix returns a 2d array of given slice of slices
