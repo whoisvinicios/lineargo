@@ -29,21 +29,3 @@ func ZeroMatrix(row, columns int) *Matrix {
 func Identity(row, column int) *Matrix {
 	return &Matrix{}
 }
-
-// Add two arrays
-// TODO implement
-func (m Matrix) Add(o Matrix) *Matrix {
-	return nil
-}
-
-// Subtract two arrays
-// TODO implement
-func (m Matrix) Subtract(o Matrix) *Matrix {
-	return nil
-}
-
-// ScalarMultiply an array by an scalar number
-// TODO inplement
-func (m Matrix) ScalarMultiply(e int) *Matrix {
-	return nil
-}
