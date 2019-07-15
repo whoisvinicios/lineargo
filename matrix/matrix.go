@@ -12,8 +12,12 @@ type Matrix struct {
 
 // NewMatrix returns a 2d array of given slice of slices
 // NewMatrix([][]float64{{1, 2}, {2, 1}})
-func NewMatrix(m [][]float64) *Matrix {
-	return &Matrix{matrix: m, rows: len(m), columns: len(m[0])}
+func NewMatrix(matrix [][]float64) *Matrix {
+	return &Matrix{
+		matrix:  matrix,
+		rows:    len(matrix),
+		columns: len(matrix[0]),
+	}
 }
 
 // ZeroMatrix return a new matrix of zeros
@@ -22,7 +26,7 @@ func ZeroMatrix(row, columns int) *Matrix {
 	for i := range matrix {
 		matrix[i] = make([]float64, columns)
 	}
-	return &Matrix{matrix: matrix, rows: row, columns: columns}
+	return NewMatrix(matrix)
 }
 
 // Identity returns an array with only 1 on its main diagonal
