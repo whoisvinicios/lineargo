@@ -1,6 +1,6 @@
 package matrix
 
-// Multiply two arrays
+// This function multiply two arrays
 // TODO Try to make concurrent multiplication
 func (m *Matrix) Multiply(o *Matrix) *Matrix {
 	if m.columns != o.rows {
